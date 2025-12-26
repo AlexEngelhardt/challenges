@@ -47,6 +47,8 @@ class TreeNode:
 
     @classmethod
     def list_to_tree(cls, list_in) -> TreeNode:
+        if not list_in:
+            return None
         queue = deque()
         root = cls(list_in.pop(0))
         queue.append(root)
@@ -86,6 +88,18 @@ def test_list_to_tree():
     assert tree.left.left.val == 4
     assert tree.left.left.left is None
     assert tree.left.right.val == 5
+    assert tree.right.left.val == 6
+    assert tree.right.right.val == 7
+    assert tree.right.right.left is None
+
+def test_list_to_tree_with_nulls():
+    list_in = [1,2,3,None,None,6,7]
+    tree = TreeNode.list_to_tree(list_in)
+    assert tree.val == 1
+    assert tree.left.val == 2
+    assert tree.right.val == 3
+    assert tree.left.left.val is None
+    assert tree.left.right.val is None
     assert tree.right.left.val == 6
     assert tree.right.right.val == 7
     assert tree.right.right.left is None
