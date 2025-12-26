@@ -37,8 +37,20 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        durr
+        slow_ptr = head
+        fast_ptr = head
 
-def test_has_cycle():
-    sol = Solution()
-    assert sol.hasCycle(
+        while fast_ptr is not None:
+            slow_ptr = slow_ptr.next
+            if fast_ptr.next is None:
+                # more elegant: rewrite the while condition to while fast_ptr and fast_ptr.next
+                return False
+            fast_ptr = fast_ptr.next.next
+            if slow_ptr == fast_ptr:
+                return True
+        return False
+
+
+# Testing: do later, b/c I'd need a function that transforms 
+# head = [1,2,3,4], index = 1
+# into a LL where node 4's next is 2. Mendoukusai naa.
