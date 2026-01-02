@@ -11,7 +11,10 @@
 
 class Solution:
     def reverseBits(self, n: int) -> int:
-        return 3
+        n_bin = bin(n)[2:]
+        n_bin = "0" * (32 - len(n_bin)) + n_bin
+        res = n_bin[::-1]
+        return int(res, 2)
 
 
 def test_reverse_bits():
