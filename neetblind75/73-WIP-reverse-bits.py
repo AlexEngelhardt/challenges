@@ -11,6 +11,8 @@
 
 class Solution:
     def reverseBits(self, n: int) -> int:
+        # This uses strings, which works but is not the spirit of this exercise.
+        # Re-do it with bit manipulation.
         n_bin = bin(n)[2:]
         n_bin = "0" * (32 - len(n_bin)) + n_bin
         res = n_bin[::-1]
