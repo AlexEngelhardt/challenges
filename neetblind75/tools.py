@@ -115,3 +115,13 @@ def test_tree_to_list():
     list_out = TreeNode.tree_to_list(root)
     assert list_out == [1,2,3,4,5,6,7]
 
+
+class Interval(object):
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+    @classmethod
+    def from_tuple(cls, tuple_in):
+        return cls(start=tuple_in[0], end=tuple_in[1])
+
