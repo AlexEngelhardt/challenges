@@ -29,10 +29,14 @@
 
 from typing import List
 import pytest
+from typing import defaultdict
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        return [["hat"],["act", "cat"],["stop", "pots", "tops"]]
+        result = defaultdict(list)
+        for word in strs:
+            result["".join(sorted(word))].append(word)
+        return list(result.values())
 
 @pytest.mark.parametrize("in_list,expected_out_list",[
     (["act","pots","tops","cat","stop","hat"],[["hat"],["act", "cat"],["stop", "pots", "tops"]]),
